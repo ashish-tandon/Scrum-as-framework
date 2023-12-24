@@ -1,0 +1,200 @@
+﻿@model IEnumerable<Ferramenta_Scrumt.MODEL.Quadro_tarefas>
+
+@{
+    ViewBag.Title = "Quadro de Tarefas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .sortable-todo {
+        list-style-type: none;
+        min-height: 10px;
+    }
+    .sortable-description {
+        border-radius: 3px;
+        color: #7f8b97;
+        line-height: 1.3;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+<div class="page-heading">
+    <h3>
+        Quadro de Tarefas
+    </h3>
+    <div class="col-md-offset-7 col-md-1 col-xs-8">
+        <label class="col-lg-2 col-sm-2 control-label">Projeto</label>
+    </div>
+    <div class="col-md-2 col-xs-8">
+        @Html.DropDownList("Descricao", (SelectList)ViewBag.Projeto,"Selecione", htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div class="col-md-2 col-xs-8">
+        <p>
+            <button class="btn btn-info" onclick="location.href='@Url.Action("Index", "ReleaseBacklog")'" type="button">Release Backlog</button>
+        </p>
+    </div>
+</div>
+<div class="wrapper">
+
+    <div class="col-md-3">
+        <div class="panel">
+            <header class="panel-heading">
+                A Fazer
+            </header>
+            <div class="panel-body">
+                <ul class="to-do-list sortable-todo">
+                @foreach (var item in Model)
+                {
+                    <p>
+                        @if (item.Situacao == "A Fazer")
+                        {
+                        <li class="clearfix">
+                            <p class="todo-title">
+                                
+                                    @Html.DisplayFor(modelItem => item.Historia)
+                                    @if (item.Importancia == "Alta")
+                                    {
+                                        <span class="label label-danger">Alta</span>
+                                    }
+                                    @if (item.Importancia == "Média")
+                                    {
+                                        <span class="label label-warning">Média</span>
+                                    }
+                                    @if (item.Importancia == "Baixa")
+                                    {
+                                        <span class="label label-success">Baixa</span>
+                                    }
+                                <a class="menu-icon pull-right" href="#"></a>
+                            </p>
+                        </li>
+                        }
+                        
+                    </p>
+                }
+                </ul>
+                
+            </div>
+        </div>
+        <p class="sortable-description">Tarefas que precisam ser feitas</p>
+    </div>
+    <div class="col-md-3">
+        <div class="panel">
+            <header class="panel-heading">
+                Em Execução
+            </header>
+            <div class="panel-body">
+                <ul class="to-do-list sortable-todo">
+                    @foreach (var item in Model)
+                    {
+                        <span>
+                            @if (item.Situacao == "Em Execução")
+                            {
+                                <li class="clearfix">
+                                    <p class="todo-title">
+
+                                        @Html.DisplayFor(modelItem => item.Historia)
+                                        @if (item.Importancia == "Alta")
+                                        {
+                                            <span class="label label-danger">Alta</span>
+                                        }
+                                        @if (item.Importancia == "Média")
+                                        {
+                                            <span class="label label-warning">Média</span>
+                                        }
+                                        @if (item.Importancia == "Baixa")
+                                        {
+                                            <span class="label label-success">Baixa</span>
+                                        }
+                                        <a class="menu-icon pull-right" href="#"></a>
+                                    </p>
+                                </li>
+                            }
+
+                        </span>
+                    }
+
+                </ul>
+                
+            </div>
+        </div>
+        <p class="sortable-description">Tarefas que está trabalhando</p>
+    </div>
+    <div class="col-md-3">
+        <div class="panel">
+            <header class="panel-heading">
+                Em Teste
+            </header>
+            <div class="panel-body">
+                <ul class="to-do-list sortable-todo">
+                    @foreach (var item in Model)
+                    {
+                        <span>
+                            @if (item.Situacao == "Em Teste")
+                            {
+                                <li class="clearfix">
+                                    <p class="todo-title">
+                                        @Html.DisplayFor(modelItem => item.Historia)
+                                        @if (item.Importancia == "Alta")
+                                        {
+                                            <span class="label label-danger">Alta</span>
+                                        }
+                                        @if (item.Importancia == "Média")
+                                        {
+                                            <span class="label label-warning">Média</span>
+                                        }
+                                        @if (item.Importancia == "Baixa")
+                                        {
+                                            <span class="label label-success">Baixa</span>
+                                        }
+                                        <a class="menu-icon pull-right" href="#"></a>
+                                    </p>
+                                </li>
+                            }
+                        </span>
+                    }
+                </ul>
+            </div>
+        </div>
+        <p class="sortable-description">Testes estão sendo realizados</p>
+    </div>
+    <div class="col-md-3">
+        <div class="panel">
+            <header class="panel-heading">
+                Done (Pronto)
+            </header>
+            <div class="panel-body">
+                <ul class="to-do-list sortable-todo" >
+                    @foreach (var item in Model)
+                    {
+                        <span>
+                            @if (item.Situacao == "Done")
+                            {
+                                <li class="clearfix">
+                                    <p class="todo-title">
+
+                                        @Html.DisplayFor(modelItem => item.Historia)
+                                        @if (item.Importancia == "Alta")
+                                        {
+                                            <span class="label label-danger">Alta</span>
+                                        }
+                                        @if (item.Importancia == "Média")
+                                        {
+                                            <span class="label label-warning">Média</span>
+                                        }
+                                        @if (item.Importancia == "Baixa")
+                                        {
+                                            <span class="label label-success">Baixa</span>
+                                        }
+                                        <a class="menu-icon pull-right" href="#"></a>
+                                    </p>
+                                </li>
+                            }
+                        </span>
+                    }
+                </ul>
+            </div>
+        </div>
+        <p class="sortable-description">Tarefas finalizadas. Parabéns!</p>
+    </div>
+
+</div>
+

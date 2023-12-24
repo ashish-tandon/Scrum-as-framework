@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Ferramenta_Scrumt.MODEL.Users>
+
+@{
+    ViewBag.Title = "Equipe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-heading">
+    <h3>
+        Equipe
+    </h3>
+    <div class="col-md-10 col-xs-8">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Cadastros</a>
+            </li>
+            <li class="active">Equipe</li>
+        </ul>
+    </div>
+    <div class="col-md-2 col-xs-8">
+        <p>
+            @Html.ActionLink("Adicionar Membro", "Create", 0, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+    <hr>
+</div>
+<div class="wrapper">
+    <div class="directory-info-row">
+        <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-sm-6">
+                <div class="panel">
+                    <div class="panel-body">
+                   
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="thumb media-object" src="http://placehold.it/80x80" alt="">
+                            </a>
+                            <div class="col-md-7">
+                                <h4>@Html.DisplayFor(model => item.Nome) <span class="text-muted small"> - @Html.DisplayFor(modelItem => item.Nome_Funcao)</span></h4>
+                                <address>
+                                    <strong>@Html.DisplayFor(modelItem => item.Email)</strong><br>
+                                </address>
+                            
+                            </div>
+                             <div class="col-md-2">
+                                 <a href="#" class="btn btn-time btndelete glyphicon glyphicon-trash" data-value="@item.ID"></a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $.ajaxSetup({ cache: false });
+
+            $(".btndelete").click(function () {
+
+                var id = $(this).data("value");
+
+                $("#myModal").load("/Users/Delete/" + id, function () {
+                    $('#myModal').modal("show");
+                });
+            });
+        });
+
+    </script>
+
+}

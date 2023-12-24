@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ScrumT</title>
+    <link rel="icon" type="image/png" href="~/images/favicon.png" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body class="sticky-header">
+
+    <section>
+        @{Html.RenderPartial("Menu"); }
+
+        <div class="main-content">
+            <!-- header section start-->
+            <div class="header-section">
+                <!--toggle button start-->
+                <a class="toggle-btn"><i class="ico-menu"></i></a>
+                <!--toggle button end-->
+                <!--search start-->
+                <!--search end-->
+                <!--notification menu start -->
+                <div class="menu-right">
+                    <ul class="notification-menu">
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle info-number" title="Teste de Unidade" data-toggle="dropdown">
+                                <i class="ico-stack"></i>
+
+                                <span class="badge">
+                                @{int i = 0;
+                                    foreach (var item in  ViewBag.tes)
+                                    {
+                                        i = i + 1;
+                                        
+                                    }
+                                } @i</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-head pull-right">
+                                <h5 class="title">Progresso Testes Unidade</h5>
+                                <ul class="dropdown-list user-list">
+                                @foreach (var item in ViewBag.tes)
+                                {
+                                    <li class="new">
+                                        <a href="#">
+                                            <div class="task-info">
+                                                <a> História: @item.Text </a> - <em class="small"> Classe: @item.Group.Name</em>
+                                            </div>
+                                            <div class="progress progress-striped active progress-sm">
+                                                @if (item.Value == "33")
+                                                {
+                                                    <div style="width: 33%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger">
+                                                        <span class="">33%</span>
+                                                    </div>
+                                                }
+                                                @if (item.Value == "66")
+                                                {
+                                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning">
+                                                        <span class="">66%</span>
+                                                    </div>
+                                                }
+                                                @if (item.Value == "100")
+                                                {
+                                                    <div style="width: 100%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success">
+                                                        <span class="">100%</span>
+                                                    </div>
+                                                }
+                                            </div>
+                                      
+                                        </a>
+                                    </li>
+                                    }
+                                    <li class="new"><a href="~/TesteUnidade/Index">Testes Cadastrados</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle info-number" title="Teste de Integração" data-toggle="dropdown">
+                                <i class="ico-drawer"></i>
+
+                                <span class="badge badge-warning">
+                                    @{
+                                        int n = 0;
+                                        foreach (var item2 in ViewBag.testint)
+                                        {
+                                            n = n + 1;
+
+                                        }
+                                    } @n
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-head pull-right">
+                                <h5 class="title">Progresso Testes de Integração</h5>
+                                <ul class="dropdown-list user-list">
+                                    @foreach (var item2 in ViewBag.testint)
+                                    {
+                                        <li class="new">
+                                            <a href="#">
+                                                <div class="task-info">
+                                                    <a>História: @item2.Text</a> - <em class="small"> Versão Testada: @item2.Group.Name</em>
+                                                </div>
+                                                <div class="progress progress-striped active progress-sm">
+                                                    @if (item2.Value == "33")
+                                                    {
+                                                        <div style="width: 33%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger">
+                                                            <span class="">33%</span>
+                                                        </div>
+                                                    }
+                                                    @if (item2.Value == "66")
+                                                    {
+                                                        <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning">
+                                                            <span class="">66%</span>
+                                                        </div>
+                                                    }
+                                                    @if (item2.Value == "100")
+                                                    {
+                                                        <div style="width: 100%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success">
+                                                            <span class="">100%</span>
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                            </a>
+                                        </li>
+                                    }
+                                    <li class="new"><a href="~/TesteIntegracao/Index">Testes Cadastrados</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle info-number" title="Teste de Sistema" data-toggle="dropdown">
+                                <i class="ico-laptop"></i>
+
+                                <span class="badge">
+                                    @{int s = 0;
+                                        foreach (var item in ViewBag.testsis)
+                                        {
+                                            s = s + 1;
+
+                                        }
+                                    } @s
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-head pull-right">
+                                <h5 class="title">Progresso Testes de Sistema</h5>
+                                <ul class="dropdown-list user-list">
+                                    @foreach (var item in ViewBag.testsis)
+                                    {
+                                        <li class="new">
+                                            <a href="#">
+                                                <div class="task-info">
+                                                    <a>Falhas: @item.Text</a> - <em class="small"> Versao: @item.Group.Name</em>
+                                                </div>
+                                                <div class="progress progress-striped active progress-sm">
+                                                    @if (item.Value == "33")
+                                                    {
+                                                        <div style="width: 33%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger">
+                                                            <span class="">33%</span>
+                                                        </div>
+                                                    }
+                                                    @if (item.Value == "66")
+                                                    {
+                                                        <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning">
+                                                            <span class="">66%</span>
+                                                        </div>
+                                                    }
+                                                    @if (item.Value == "100")
+                                                    {
+                                                        <div style="width: 100%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success">
+                                                            <span class="">100%</span>
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                            </a>
+                                        </li>
+                                    }
+                                    <li class="new"><a href="~/TesteSistema/Index">Testes Cadastrados</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle info-number" title="Teste de Aceitação" data-toggle="dropdown">
+                                <i class="ico-checkmark"></i>
+                                <span class="badge badge-warning">
+                                    @{int a = 0;
+                                        foreach (var item in ViewBag.testacei)
+                                        {
+                                            a = a + 1;
+
+                                        }
+                                    } @a
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-head pull-right">
+                                <h5 class="title">Notificações Testes de Aceitação</h5>
+                                <ul class="dropdown-list normal-list">
+                                @foreach (var item in ViewBag.testacei)
+                                {
+                                    <li class="new">
+                                        <a href="">
+                                            <span class="label label-danger" style="margin-top:10px"><i class="fa fa-check"></i></span>
+                                            Responsável: @item.Value<br>
+                                            <span class="name">Stakeholders: @item.Text  </span>
+                                            <br>
+                                            <em class="small">Data: @item.Group.Name</em>
+                                        </a>
+                                    </li>
+                                }
+                                    <li class="new"><a href="~/TesteAceitacao/Index">Todos os Testes de Aceitação</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <!--<img class="img-perfil" src="http://placehold.it/20x20" alt="">-->
+                                @if (@Session["nomeUsuarioLogado"] == null)
+                                {
+                                    
+                                }
+                                @if (@Session["nomeUsuarioLogado"] != null)
+                                {
+                                    @Session["nomeUsuarioLogado"].ToString()
+                                }
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                <li>
+                                    <a href="/Login/Profile">
+                                        <i class="fa fa-user"></i> 
+                                        <span>Perfil</span>
+                                    </a>
+                                </li>
+                                <li><a href="/Fluxo/Index"><i class="fa fa-question"></i> <span>Ajuda</span></a></li>
+                                <li><a href="/Login/LogOff"><i class="fa fa-sign-out"></i> <span>Sair</span></a></li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </div>
+                <!--notification menu end -->
+            </div>
+            <!-- header section end-->
+            @RenderBody()
+            <footer class="sticky-footer">
+                @DateTime.Now.Year &copy; Scrumt
+            </footer>
+        </div>
+
+    </section>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.multi-select.js"></script>
+    <script type="text/javascript">
+        $('#pre-selected-options').multiSelect();
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

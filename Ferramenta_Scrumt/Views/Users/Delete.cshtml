@@ -1,0 +1,28 @@
+﻿@model Ferramenta_Scrumt.MODEL.Users
+
+@{
+    Layout = null;
+    ViewBag.Title = "Deletar Membro";
+}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Deseja excluir este membro do time?</h4>
+        </div>
+        <div class="modal-body">
+            <p>@Html.DisplayNameFor(model => model.Nome) : @Html.DisplayFor(model => model.Nome)</p>
+            <p>@Html.DisplayNameFor(model => model.Funcao) : @Html.DisplayFor(model => model.Nome_Funcao)</p>
+            <p>@Html.DisplayNameFor(model => model.Email) : @Html.DisplayFor(model => model.Email)</p>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" formmethod="post" value="Deletar" class="btn btn-danger" />
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
